@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>2-3ゾーンディフェンス攻略教材（滑らかパス版）</title>
+<style>
+:root{--bg:#eef3f8;--card:#fff;--ink:#142033;--muted:#5c687a;--blue:#1675d1;--red:#e5484d;--gold:#f3b51b;--green:#16865b;--line:#d8e1eb;--court:#e8b979}
+*{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,"BIZ UDPGothic","Yu Gothic",sans-serif;background:var(--bg);color:var(--ink)}
+button,select{font:inherit}.app{max-width:980px;margin:auto;padding:12px 12px 32px}.top{background:#123b63;color:white;border-radius:18px;padding:16px;margin-bottom:12px}.top h1{font-size:clamp(20px,5vw,30px);margin:0 0 6px}.top p{margin:0;line-height:1.55;font-size:14px}.tabs{display:flex;gap:8px;overflow-x:auto;padding:2px 0 10px;scroll-snap-type:x mandatory}.tab{flex:0 0 auto;border:0;border-radius:999px;padding:10px 14px;background:white;color:#334155;box-shadow:0 2px 8px #0001;scroll-snap-align:start}.tab.active{background:var(--blue);color:white;font-weight:700}.grid{display:grid;gap:12px}.card{background:var(--card);border-radius:18px;padding:14px;box-shadow:0 4px 18px #16324f14}.titleRow{display:flex;gap:10px;align-items:flex-start}.num{display:grid;place-items:center;flex:0 0 34px;height:34px;border-radius:10px;background:#e5f1ff;color:#0b63b6;font-weight:800}.card h2{font-size:20px;margin:2px 0 4px}.aim{margin:0;color:var(--muted);font-size:14px}.courtWrap{position:relative;width:100%;max-width:620px;margin:12px auto 0;aspect-ratio:15/14;background:var(--court);border:3px solid white;border-radius:9px;overflow:hidden;box-shadow:inset 0 0 0 1px #6d482033}.courtSvg{position:absolute;inset:0;width:100%;height:100%}.actionSvg{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none}.player{z-index:3}.actionBadge{display:inline-block;margin-right:7px;padding:3px 9px;border-radius:999px;color:#fff;font-size:12px;font-weight:900;letter-spacing:.04em}.actionBadge.pass{background:#7b4bc4}.actionBadge.dribble{background:#dd6b20}.actionBadge.move{background:#287d4f}.actionLegend{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:7px 0 0;font-size:12px;font-weight:700}.actionLegend i{display:inline-block;width:24px;margin-right:5px;vertical-align:3px}.actionLegend .passLine{border-top:4px dashed #7b4bc4}.actionLegend .dribbleLine{border-top:4px solid #dd6b20}.actionLegend .moveLine{border-top:3px dotted #287d4f}.player{position:absolute;translate:-50% -50%;width:clamp(29px,8vw,42px);height:clamp(29px,8vw,42px);border-radius:50%;display:grid;place-items:center;color:white;font-weight:800;border:2px solid white;box-shadow:0 2px 8px #0005;transition:left 2s ease,top 2s ease,transform .6s ease,opacity .6s}.off{background:var(--blue)}.def{background:var(--red)}.ball:after{display:none}.liveBall{position:absolute;z-index:6;width:14px;height:14px;border-radius:50%;background:#ef7f1a;border:2px solid #6b3200;translate:-50% -50%;box-shadow:0 2px 4px #0005;pointer-events:none;will-change:left,top,transform;transition-property:left,top;transition-timing-function:cubic-bezier(.33,.05,.2,1)}.liveBall.dribbling{animation:ballPulse .38s ease-in-out infinite alternate}@keyframes ballPulse{from{transform:translateY(-2px) scale(1)}to{transform:translateY(5px) scale(.9)}}.focus{outline:4px solid #ffe36b;transform:scale(1.12)}
+.controls{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.btn{border:0;border-radius:12px;padding:11px 15px;font-weight:750;background:#e8eef5;color:#1f334a}.btn.primary{background:var(--blue);color:#fff}.btn:focus-visible,.tab:focus-visible,.choice:focus-visible{outline:3px solid #111;outline-offset:2px}.stepText{margin-top:10px;padding:12px;background:#f2f7fc;border-left:5px solid var(--blue);border-radius:10px;line-height:1.6;min-height:70px}.notes{display:grid;gap:9px;margin-top:12px}.note{padding:11px 12px;border-radius:12px;line-height:1.55;font-size:14px}.note.key{background:#fff5cf;border:1px solid #f0d16d}.note.warn{background:#ffebec;border:1px solid #f2afb2}.note.look{background:#e9f8f1;border:1px solid #9ad7bd}.note strong{display:block;margin-bottom:2px}.quiz{margin-top:12px;border-top:1px solid var(--line);padding-top:12px}.quiz h3{margin:0 0 8px;font-size:16px}.choices{display:grid;gap:8px}.choice{width:100%;border:2px solid var(--line);border-radius:12px;background:white;padding:11px;text-align:left}.choice.correct{border-color:var(--green);background:#e8f7f0}.choice.wrong{border-color:var(--red);background:#fff0f0}.feedback{min-height:46px;margin-top:8px;padding:9px 10px;border-radius:10px;background:#f5f7fa;color:#334155;line-height:1.5}.legend{display:flex;justify-content:center;gap:16px;margin:8px 0 0;font-size:13px}.dot{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:5px;vertical-align:-1px}.footerNote{font-size:12px;color:var(--muted);line-height:1.55;margin-top:12px}@media(min-width:760px){.grid{grid-template-columns:minmax(0,1.4fr) minmax(280px,.8fr)}.side{align-self:start;position:sticky;top:10px}.choices{grid-template-columns:1fr 1fr}.choice:last-child:nth-child(odd){grid-column:1/-1}}
+@media(prefers-reduced-motion:reduce){.player{transition:none}}
+</style>
+</head>
+<body>
+<main class="app">
+<header class="top"><h1>2-3ゾーンディフェンス攻略</h1><p>ボールを回すだけでなく、ゾーンの「誰を動かし、どこを空けるか」を見て判断しよう。</p></header>
+<nav class="tabs" id="tabs" aria-label="攻略パターン"></nav>
+<section class="grid">
+  <div class="card">
+    <div class="titleRow"><div class="num" id="num"></div><div><h2 id="patternTitle"></h2><p class="aim" id="aim"></p></div></div>
+    <div class="courtWrap" id="court" aria-label="バスケットボールコートのアニメーション">
+      <svg class="courtSvg" viewBox="0 0 600 560" aria-hidden="true">
+<g fill="none" stroke="#fff" stroke-width="4">
+  <rect x="3" y="3" width="594" height="554"/>
+  <path d="M202 3V232H398V3"/>
+  <path d="M228 232A72 72 0 0 0 372 232"/>
+  <path d="M228 232A72 72 0 0 1 372 232" stroke-dasharray="12 10"/>
+  <path d="M36 3V120 A270 270 0 0 0 564 120 V3"/>
+  <path d="M248 63A52 52 0 0 0 352 63"/>
+  <path d="M252 48H348"/>
+</g>
+<circle cx="300" cy="63" r="7" fill="none" stroke="#e44" stroke-width="4"/>
+</svg>
+      <svg class="actionSvg" id="actionSvg" viewBox="0 0 600 560" aria-hidden="true">
+        <defs>
+          <marker id="arrowPass" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#7b4bc4"/></marker>
+          <marker id="arrowDribble" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#dd6b20"/></marker>
+          <marker id="arrowMove" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#287d4f"/></marker>
+        </defs>
+        <g id="moveGroup"></g><path id="actionPath" fill="none" stroke-width="7" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="actionLegend"><span><i class="passLine"></i>パス</span><span><i class="dribbleLine"></i>ドリブル</span><span><i class="moveLine"></i>ボールなしの移動</span></div>
+    <div class="legend"><span><i class="dot" style="background:#1675d1"></i>オフェンス</span><span><i class="dot" style="background:#e5484d"></i>ディフェンス</span></div>
+    <div class="controls"><button class="btn primary" id="play" type="button">▶ 再生</button><button class="btn" id="prev" type="button">◀ 1つ戻る</button><button class="btn" id="next" type="button">1つ進む ▶</button><button class="btn" id="reset" type="button">↺ 最初から</button></div>
+    <div class="stepText" id="stepText" aria-live="polite"></div>
+  </div>
+  <aside class="card side">
+    <div class="notes" id="notes"></div>
+    <div class="quiz"><h3 id="question"></h3><div class="choices" id="choices"></div><div class="feedback" id="feedback" aria-live="polite">選択肢をタップしてください。</div></div>
+    <p class="footerNote">※動き方はチームの約束に合わせて調整してください。実戦では、パスを出した後に止まらず、空いた場所を埋め直すことが大切です。</p>
+  </aside>
+</section>
+</main>
+<script>
+(()=>{
+const base={
+ O1:[50,82],O2:[22,60],O3:[78,60],O4:[12,32],O5:[88,32],
+ D1:[38,68],D2:[62,68],D3:[22,40],D4:[50,35],D5:[78,40]
+};
+const patterns=[
+ {title:'ハイポスト攻略',aim:'中央にボールを入れ、下側3人の判断を難しくする',steps:[
+  {t:'①から右ウイング③へパス。上のDFを横に動かす。',p:{O1:[50,82],O3:[78,60]},ball:'O3',f:['D2']},
+  {t:'逆側の④がハイポストへフラッシュ。DFとDFの間で止まる。',p:{O4:[50,50]},ball:'O3',f:['O4']},
+  {t:'③から④へ。受けた④はリングを向き、中央DFの反応を見る。',p:{O4:[50,50],D4:[50,42]},ball:'O4',f:['D4']},
+  {t:'中央DFが前へ出たので、背後の⑤へパスしてフィニッシュ。',p:{O5:[55,20]},ball:'O5',f:['O5']},
+  {t:'【第一の狙いが消されたら】ハイポストへのパスを無理に通さない。④は左コーナーまで抜け、⑤が逆サイドからハイポストへ入り直す。①は右スロット、②は左ウイングへリフトしてパス角度を作る。',p:{O1:[58,78],O2:[20,56],O4:[12,30],O5:[50,49]},ball:'O3',f:['O1','O2','O4','O5']},
+  {t:'③から①へ戻す。③は右コーナーへ下がり、⑤はハイポストでシール。ボールを止めず、中央への入口を作り直す。',p:{O1:[58,78],O3:[88,31],O5:[50,49]},ball:'O1',f:['O3','O5']},
+  {t:'①から左ウイング②へリバース。④は左ショートコーナーへ上がり、⑤はゴール下へダイブ。逆側から同じ二択を作る。',p:{O2:[22,58],O4:[27,25],O5:[50,19]},ball:'O2',f:['O4','O5']}
+ ],notes:['継続の約束|第一の狙いが消されたら、止まらず①出口を作る ②空いた場所を埋める ③逆サイドへ展開する。','見る順番|①リング ②ゴール下 ③コーナー。受ける前から確認する。','注意|ハイポストでボールに背を向けない。キャッチと同時にリングへ正対する。','ねらい|中央DFを前へ出し、ゴール下の背後を空ける。'],q:'ハイポストで受け、中央DFが前に出た。次は？',choices:['ゴール下を見る','すぐトップへ戻す','下を見ずにドリブル'],a:0,fb:'正解。中央DFの背後にできたゴール下のスペースを最初に見よう。'},
+ {title:'ショートコーナー攻略',aim:'コーナーとゴール下を同時に使い、下のDFを迷わせる',steps:[
+  {t:'①から右ウイング③へ。右下DFがボール側へ寄る。',p:{D5:[80,45]},ball:'O3',f:['D5']},
+  {t:'⑤がコーナーからショートコーナーへ入る。ベースライン側の空間を使う。',p:{O5:[73,25]},ball:'O3',f:['O5']},
+  {t:'下のDFがコーナーを意識したら、⑤へパス。',p:{D5:[86,34]},ball:'O5',f:['D5']},
+  {t:'中央DFが⑤へ出たら、④がゴール下へ合わせる。',p:{D4:[65,28],O4:[48,18]},ball:'O4',f:['O4']},
+  {t:'【第一の狙いが消されたら】ショートコーナーへのパスを止められたら、⑤はゴール下に留まらずベースラインを横切る。④がハイポストへ入り、①と②は左側のパス角度を広げる。',p:{O1:[43,78],O2:[18,56],O4:[50,49],O5:[30,23]},ball:'O3',f:['O1','O2','O4','O5']},
+  {t:'③から①へ戻す間に、⑤は左ショートコーナーへ抜ける。③は右コーナーへ下がり、右側を空ける。',p:{O1:[43,78],O3:[88,31],O5:[27,25]},ball:'O1',f:['O3','O5']},
+  {t:'①から②へリバース。④がハイポスト、⑤が左ショートコーナーのハイ・ローを作り、ゾーンを逆側から攻め直す。',p:{O2:[22,58],O4:[50,49],O5:[27,25]},ball:'O2',f:['O4','O5']}
+ ],notes:['継続の約束|第一の狙いが消されたら、止まらず①出口を作る ②空いた場所を埋める ③逆サイドへ展開する。','見る順番|ショートコーナーで受けたらリング、ゴール下、コーナー。','注意|ただベースラインに立つのではなく、下のDFの視野の外に入る。','ねらい|中央DFと下のDFの間を広げ、どちらかを空ける。'],q:'中央DFがショートコーナーへ出た。空きやすい場所は？',choices:['ゴール下','同じショートコーナー','センターライン付近'],a:0,fb:'正解。中央DFが離れた背後へ、逆側の選手がタイミングよく合わせる。'},
+ {title:'オーバーロード',aim:'片側に3人を配置し、2人のDFへ数的優位を作る',steps:[
+  {t:'右側に③、⑤、④の3人を配置する。',p:{O4:[60,46],O5:[88,30]},ball:'O3',f:['O3','O4','O5']},
+  {t:'上のDFが③へ出る。③はドリブルでDFを引きつけすぎない。',p:{D2:[72,60]},ball:'O3',f:['D2']},
+  {t:'下のDFがコーナー⑤を守るために下がる。④がハイポストで空く。',p:{D5:[84,34]},ball:'O4',f:['O4']},
+  {t:'中央DFが④へ出れば、ゴール下への合わせが空く。',p:{D4:[59,40],O2:[48,18]},ball:'O2',f:['O2']},
+  {t:'【第一の狙いが消されたら】片側3対2へ入らなければ密集を続けない。④は逆ハイポスト、⑤は右コーナーを保ち、①は中央へ戻って出口を作る。',p:{O1:[50,80],O4:[40,48],O5:[88,31]},ball:'O3',f:['O1','O4','O5']},
+  {t:'③から①へ戻す。③は右ウイングに広がり直し、④は左エルボー、⑤は右ショートコーナーへ移動してゾーンを横に広げる。',p:{O3:[78,58],O4:[40,48],O5:[73,25]},ball:'O1',f:['O3','O4','O5']},
+  {t:'①から②へリバース。②側で④とのハイポスト二人ゲームを作り、逆側の③と⑤は45度とショートコーナーを保つ。',p:{O2:[22,58],O3:[78,58],O4:[40,48],O5:[73,25]},ball:'O2',f:['O4']}
+ ],notes:['継続の約束|第一の狙いが消されたら、止まらず①出口を作る ②空いた場所を埋める ③逆サイドへ展開する。','見る順番|ウイング、ハイポスト、コーナーの三角形で2人のDFを見る。','注意|3人が一直線に並ばない。パス角度ができる三角形を保つ。','ねらい|3対2を作り、DFが動いた後の空いた選手を使う。'],q:'片側3人が一直線になると何が起きやすい？',choices:['パスコースが重なる','必ずゴール下が空く','DFが1人減る'],a:0,fb:'正解。三角形を作って、2本以上のパスコースを確保しよう。'},
+ {title:'ボールリバーサル',aim:'ゾーンを左右に揺さぶり、DFの移動が遅れる瞬間を作る',steps:[
+  {t:'左ウイング②からトップ①へ戻す。DFを中央へ引き戻す。',p:{D1:[42,68]},ball:'O1',f:['D1']},
+  {t:'①から右ウイング③へ素早く展開。ボールを空中で先に動かす。',p:{D2:[58,68]},ball:'O3',f:['O3']},
+  {t:'上のDFが遅れたら③はすぐリングを見る。',p:{D2:[68,64]},ball:'O3',f:['D2']},
+  {t:'下のDFが上がれば、右コーナー⑤へもう1本つなぐ。',p:{D5:[78,47]},ball:'O5',f:['O5']},
+  {t:'【第一の狙いが消されたら】逆ウイング③へのパスコースが閉じたら、①は強引に投げない。③はバックカット、⑤は右ウイングへリフトし、④はハイポストへ入る。',p:{O3:[62,38],O4:[48,49],O5:[80,56]},ball:'O1',f:['O3','O4','O5']},
+  {t:'①は右へ短くドリブルしてパス角度を変える。③はゴール下を通って左ショートコーナーへ抜け、②は左コーナーへ下がる。',p:{O1:[60,76],O2:[12,31],O3:[29,24]},ball:'O1',f:['O1','O2','O3']},
+  {t:'右ウイングへ上がった⑤へパス。④はハイポスト、③は逆ショートコーナーを保ち、再び中・下・逆サイドの三方向を作る。',p:{O4:[48,49],O5:[80,56],O3:[29,24]},ball:'O5',f:['O3','O4']}
+ ],notes:['継続の約束|第一の狙いが消されたら、止まらず①出口を作る ②空いた場所を埋める ③逆サイドへ展開する。','見る順番|キャッチ前にシュート、ドライブ、次のパスを準備する。','注意|ゆっくり山なりのパスではDFが戻る。強く、速く、届く距離で回す。','ねらい|DFよりボールを速く動かし、クローズアウトを長くする。'],q:'逆サイドへ展開した直後、最初にすることは？',choices:['リングを見る','必ず元へ返す','一度ドリブルを止める'],a:0,fb:'正解。シュートの構えがあるからDFが大きく出て、次の攻めも生まれる。'},
+ {title:'ベースラインランナー',aim:'下側DFの視野の外を通り、背後から逆サイドへ現れる',steps:[
+  {t:'ボールは右ウイング③。左コーナー④はDFの視野を確認する。',p:{},ball:'O3',f:['O4','D3']},
+  {t:'④がベースライン沿いをゴール下の裏へ移動する。',p:{O4:[48,18]},ball:'O3',f:['O4']},
+  {t:'右下DFがボールを見た瞬間、④が右ショートコーナーへ出る。',p:{O4:[73,25]},ball:'O3',f:['D5','O4']},
+  {t:'③から④へパス。中央DFが出れば⑤がゴール下へ合わせる。',p:{D4:[62,29],O5:[50,17]},ball:'O5',f:['O5']},
+  {t:'【第一の狙いが消されたら】ランナー④へのパスが入らなければ、④は止まらず右コーナーまで抜ける。⑤はゴール下から左ショートコーナーへ、①と②は受け直せる高さへリフトする。',p:{O1:[50,79],O2:[20,57],O4:[88,31],O5:[28,24]},ball:'O3',f:['O1','O2','O4','O5']},
+  {t:'③から①へ戻す。③は右ウイングを保ち、④は右コーナー、⑤は左ショートコーナーで下側DFを横に広げる。',p:{O1:[50,79],O3:[78,58],O4:[88,31],O5:[28,24]},ball:'O1',f:['O4','O5']},
+  {t:'①から②へリバース。⑤が左ショートコーナー、④は逆コーナーを保ち、③は右45度からダイブの準備をする。',p:{O2:[22,58],O3:[78,58],O4:[88,31],O5:[28,24]},ball:'O2',f:['O3','O4','O5']}
+ ],notes:['継続の約束|第一の狙いが消されたら、止まらず①出口を作る ②空いた場所を埋める ③逆サイドへ展開する。','見る順番|下のDFがボールと自分を同時に見られるか確認する。','注意|ゴール下に長く止まらない。DFの背後を通って逆側へ抜ける。','ねらい|下側DFの首を振らせ、マークの受け渡しを遅らせる。'],q:'ランナーが動き出すよいタイミングは？',choices:['下のDFがボールを見た瞬間','味方がシュートした後だけ','DFが自分を見ている間'],a:0,fb:'正解。DFの視野から消え、次に守る場所へ先回りしよう。'}
+];
+const $=s=>document.querySelector(s),court=$('#court');let pi=0,si=0,timer=null;
+function zoneY(k,y){ if(k==='D1'||k==='D2') return Math.max(34,Math.min(58,y*0.65+9)); if(k==='D4') return Math.max(18,Math.min(38,y*0.65)); return Math.max(22,Math.min(42,y*0.70+2)); }
+const initialBall=['O1','O1','O3','O2','O3']; // possession immediately before STEP 1
+function screenPoint(id,pos){const y=id[0]==='D'?zoneY(id,pos[1]):pos[1];return [pos[0]*6,y*5.6]}
+function actionInfo(x,index){
+ const cur=x.steps[index], prev=index?x.steps[index-1]:null;
+ const from=prev?prev.ball:initialBall[pi], to=cur.ball;
+ if(from&&to&&from!==to) return {type:'pass',label:'パス',from,to};
+ if(/ドリブル/.test(cur.t)) return {type:'dribble',label:'ドリブル',from:to,to};
+ return {type:'move',label:'ボールなしの移動',from:null,to:null};
+}
+function drawAction(x,index){
+ const info=actionInfo(x,index), path=$('#actionPath'), group=$('#moveGroup');
+ group.innerHTML='';
+ path.removeAttribute('d'); path.removeAttribute('marker-end');
+ const curPos=merged(x.steps[index]), prevPos=index?merged(x.steps[index-1]):merged({p:{}});
+ Object.keys(curPos).filter(id=>id[0]==='O').forEach(id=>{
+   const a=screenPoint(id,prevPos[id]),b=screenPoint(id,curPos[id]);
+   const dist=Math.hypot(b[0]-a[0],b[1]-a[1]);
+   if(dist<12 || (info.type==='pass' && id===info.to)) return;
+   const dx=b[0]-a[0],dy=b[1]-a[1],len=dist,cut=22;
+   const x1=a[0]+dx/len*cut,y1=a[1]+dy/len*cut,x2=b[0]-dx/len*cut,y2=b[1]-dy/len*cut;
+   const q=document.createElementNS('http://www.w3.org/2000/svg','path');
+   q.setAttribute('d',`M${x1} ${y1} L${x2} ${y2}`);q.setAttribute('fill','none');q.setAttribute('stroke','#287d4f');q.setAttribute('stroke-width','5');q.setAttribute('stroke-dasharray','4 9');q.setAttribute('stroke-linecap','round');q.setAttribute('marker-end','url(#arrowMove)');group.appendChild(q);
+ });
+ if(info.type==='move') return info;
+ const cur=curPos;
+ const prev=prevPos;
+ let a,b;
+ if(info.type==='pass'){a=screenPoint(info.from,prev[info.from]);b=screenPoint(info.to,cur[info.to]);}
+ else {a=screenPoint(info.to,prev[info.to]);b=screenPoint(info.to,cur[info.to]);}
+ const dx=b[0]-a[0],dy=b[1]-a[1],len=Math.hypot(dx,dy)||1,cut=24;
+ a=[a[0]+dx/len*cut,a[1]+dy/len*cut];b=[b[0]-dx/len*cut,b[1]-dy/len*cut];
+ if(info.type==='pass'){path.setAttribute('d',`M${a[0]} ${a[1]} L${b[0]} ${b[1]}`);path.setAttribute('stroke','#7b4bc4');path.setAttribute('stroke-dasharray','14 10');path.setAttribute('marker-end','url(#arrowPass)');}
+ else {const mx=(a[0]+b[0])/2+dy*.12,my=(a[1]+b[1])/2-dx*.12;path.setAttribute('d',`M${a[0]} ${a[1]} Q${mx} ${my} ${b[0]} ${b[1]}`);path.setAttribute('stroke','#dd6b20');path.removeAttribute('stroke-dasharray');path.setAttribute('marker-end','url(#arrowDribble)');}
+ return info;
+}
+function stepHtml(x,index){const info=drawAction(x,index),s=x.steps[index];return `<span class="actionBadge ${info.type}">${info.label}</span><strong>STEP ${index+1} / ${x.steps.length}</strong><br>${s.t}`}
+
+const els={}; Object.keys(base).forEach(id=>{const d=document.createElement('div');d.id=id;d.className='player '+(id[0]=='O'?'off':'def');d.textContent=id[1];court.appendChild(d);els[id]=d});
+const liveBall=document.createElement('div');liveBall.className='liveBall';liveBall.setAttribute('aria-label','ボール');court.appendChild(liveBall);let ballTimer=null;
+function merged(step){const p={};Object.keys(base).forEach(k=>p[k]=[...base[k]]);Object.assign(p,step.p||{});return p}
+function ballAt(id,pos,duration=0){
+ const y=id[0]==='D'?zoneY(id,pos[1]):pos[1];
+ liveBall.style.transitionDuration=duration+'ms';liveBall.style.left=pos[0]+'%';liveBall.style.top=y+'%';
+}
+function smoothPass(fromId,fromPos,toId,toPos){
+ const fy=fromId[0]==='D'?zoneY(fromId,fromPos[1]):fromPos[1];
+ const ty=toId[0]==='D'?zoneY(toId,toPos[1]):toPos[1];
+ const fx=fromPos[0],tx=toPos[0],mx=(fx+tx)/2,my=(fy+ty)/2-2.2;
+ liveBall.getAnimations().forEach(a=>a.cancel());
+ liveBall.style.transitionDuration='0ms';liveBall.style.left=fx+'%';liveBall.style.top=fy+'%';
+ const anim=liveBall.animate([
+   {left:fx+'%',top:fy+'%',transform:'scale(1)'},
+   {left:(fx+(mx-fx)*0.55)+'%',top:(fy+(my-fy)*0.55)+'%',transform:'scale(1.06)',offset:.45},
+   {left:mx+'%',top:my+'%',transform:'scale(1.08)',offset:.58},
+   {left:tx+'%',top:ty+'%',transform:'scale(1)'}
+ ],{duration:1100,easing:'cubic-bezier(.33,.05,.2,1)',fill:'forwards'});
+ anim.onfinish=()=>{liveBall.style.left=tx+'%';liveBall.style.top=ty+'%';liveBall.style.transform='scale(1)';anim.cancel()};
+}
+function stopBallTimer(){if(ballTimer){clearTimeout(ballTimer);ballTimer=null}}
+function placeBallStatic(x,index){stopBallTimer();liveBall.classList.remove('dribbling');const p=merged(x.steps[index]);const holder=index===0?x.steps[0].ball:x.steps[index].ball;ballAt(holder,p[holder],0)}
+function animateBallForStep(x,index){
+ stopBallTimer();const info=actionInfo(x,index),cur=merged(x.steps[index]),prev=index?merged(x.steps[index-1]):merged({p:{}});
+ const previousHolder=index?x.steps[index-1].ball:initialBall[pi];
+ liveBall.classList.remove('dribbling');ballAt(previousHolder,prev[previousHolder],0);
+ if(info.type==='pass'&&info.from&&info.to){
+   /* Cutter and defence start first. The passer releases after the window opens. */
+   ballTimer=setTimeout(()=>{smoothPass(info.from,prev[info.from],info.to,cur[info.to]);ballTimer=null},500);
+ }else if(info.type==='dribble'){
+   liveBall.classList.add('dribbling');ballTimer=setTimeout(()=>{ballAt(info.to,cur[info.to],1900);ballTimer=null},80);
+ }else{
+   /* On an off-ball action, the ball stays with the handler and follows only if that handler relocates. */
+   ballTimer=setTimeout(()=>{ballAt(x.steps[index].ball,cur[x.steps[index].ball],1900);ballTimer=null},80);
+ }
+}
+
+function render(){clearInterval(timer);timer=null;const x=patterns[pi],s=x.steps[si],p=merged(s);$('#num').textContent=pi+1;$('#patternTitle').textContent=x.title;$('#aim').textContent='ねらい：'+x.aim;Object.keys(els).forEach(k=>{els[k].style.left=p[k][0]+'%';els[k].style.top=(k[0]==='D' ? zoneY(k,p[k][1]) : p[k][1])+'%';els[k].classList.remove('ball');els[k].classList.toggle('focus',(s.f||[]).includes(k))});placeBallStatic(x,si);$('#stepText').innerHTML=stepHtml(x,si);$('#play').textContent='▶ 再生';renderSide();renderTabs()}
+function renderTabs(){const t=$('#tabs');t.innerHTML='';patterns.forEach((p,i)=>{const b=document.createElement('button');b.type='button';b.className='tab'+(i===pi?' active':'');b.textContent=(i+1)+'. '+p.title;b.onclick=()=>{pi=i;si=0;render()};t.appendChild(b)})}
+function renderSide(){const x=patterns[pi];$('#notes').innerHTML=x.notes.map(n=>{const [h,v]=n.split('|');const cls=h==='注意'?'warn':h==='ねらい'?'look':'key';return `<div class="note ${cls}"><strong>${h}</strong>${v}</div>`}).join('');$('#question').textContent='確認：'+x.q;$('#choices').innerHTML='';x.choices.forEach((c,i)=>{const b=document.createElement('button');b.type='button';b.className='choice';b.textContent=c;b.onclick=()=>answer(i,b);$('#choices').appendChild(b)});$('#feedback').textContent='選択肢をタップしてください。'}
+function answer(i,b){document.querySelectorAll('.choice').forEach((n,j)=>{n.disabled=true;if(j===patterns[pi].a)n.classList.add('correct')});if(i!==patterns[pi].a)b.classList.add('wrong');$('#feedback').textContent=(i===patterns[pi].a?'〇 ':'△ ')+patterns[pi].fb}
+$('#next').onclick=()=>{if(si<patterns[pi].steps.length-1){si++;const x=patterns[pi],st=x.steps[si],p=merged(st);Object.keys(els).forEach(k=>{els[k].style.left=p[k][0]+'%';els[k].style.top=(k[0]==='D'?zoneY(k,p[k][1]):p[k][1])+'%';els[k].classList.toggle('focus',(st.f||[]).includes(k))});animateBallForStep(x,si);$('#stepText').innerHTML=stepHtml(x,si)}};$('#prev').onclick=()=>{if(si>0)si--;render()};$('#reset').onclick=()=>{si=0;render()};$('#play').onclick=()=>{if(timer){clearInterval(timer);timer=null;$('#play').textContent='▶ 再生';return} if(si===patterns[pi].steps.length-1)si=0;render();$('#play').textContent='⏸ 一時停止';timer=setInterval(()=>{if(si<patterns[pi].steps.length-1){si++;const x=patterns[pi],s=x.steps[si],p=merged(s);Object.keys(els).forEach(k=>{els[k].style.left=p[k][0]+'%';els[k].style.top=(k[0]==='D' ? zoneY(k,p[k][1]) : p[k][1])+'%';els[k].classList.remove('ball');els[k].classList.toggle('focus',(s.f||[]).includes(k))});animateBallForStep(x,si);$('#stepText').innerHTML=stepHtml(x,si)}else{clearInterval(timer);timer=null;$('#play').textContent='▶ 再生'}},3300)};
+render();
+})();
+</script>
+</body></html>
